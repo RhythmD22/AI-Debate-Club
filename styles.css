@@ -1,0 +1,263 @@
+/* Import Premium Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,700;1,700&family=Merriweather:wght@300;400;700&display=swap');
+
+/* Global Styles - Deep Slate */
+.stApp {
+    background-color: #121418;
+    color: #E2E8F0;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Typography Polish */
+h1,
+h2,
+h3 {
+    font-family: 'Playfair Display', serif;
+    color: #F8FAFC;
+}
+
+.serif-text {
+    font-family: 'Merriweather', serif;
+}
+
+/* Sidebar Refinement */
+[data-testid="stSidebar"] {
+    background-color: #1A1D23;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Target the internal sidebar container for balanced efficiency */
+[data-testid="stSidebar"]>div:first-child {
+    padding: 1.15rem 1rem 0.25rem 1rem !important;
+}
+
+/* Hide the sidebar's bottom resize handle/padding area */
+[data-testid="stSidebar"] [data-testid="stVerticalBlock"]>div:last-child {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Subtle spacing for the sidebar toggle area */
+[data-testid="stSidebarNav"] {
+    padding-top: 0.35rem !important;
+}
+
+[data-testid="stSidebar"] .sidebar-header {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: #B4A078;
+    /* Muted Gold */
+    margin-bottom: 1.1rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(180, 160, 120, 0.2);
+    padding-bottom: 0.6rem;
+}
+
+/* Sidebar Section Headers */
+.sidebar-section-header {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    color: #B4A078 !important;
+    /* Muted Gold */
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.stVerticalBlock {
+    gap: 0.75rem !important;
+}
+
+hr {
+    margin: 0.65rem 0 !important;
+}
+
+/* Participant Selection Styling */
+[data-baseweb="tag"] {
+    background-color: #2D333D !important;
+    border-radius: 20px !important;
+    padding: 4px 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-baseweb="tag"] span {
+    color: #E2E8F0 !important;
+    font-size: 0.85rem !important;
+}
+
+/* Enhanced Selectbox Stability */
+div[data-baseweb="popover"] {
+    background-color: #1A1D23 !important;
+    z-index: 9999 !important;
+}
+
+div[data-baseweb="popover"] li {
+    background-color: transparent !important;
+    color: #E2E8F0 !important;
+    transition: all 0.2s ease !important;
+}
+
+div[data-baseweb="popover"] li:hover {
+    background-color: #2D333D !important;
+    color: #B4A078 !important;
+    /* Muted Gold for hover text */
+}
+
+/* Target the main select box input area */
+div[data-baseweb="select"]>div {
+    background-color: #1A1D23 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 8px !important;
+    color: #E2E8F0 !important;
+}
+
+
+/* Custom Button Style: Sophisticated Terracotta */
+.stButton button {
+    background-color: #93441A !important;
+    /* Deep Terracotta */
+    color: white !important;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    border: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.stButton button:hover {
+    background-color: #B35A44 !important;
+    /* Muted Terracotta */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
+}
+
+/* Chat Message Wrappers */
+.chat-row {
+    display: flex;
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+.chat-bubble {
+    padding: 1.25rem;
+    border-radius: 15px;
+    max-width: 80%;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    position: relative;
+}
+
+.participant-a {
+    justify-content: flex-start;
+}
+
+.participant-a .chat-bubble {
+    background-color: #1E2329;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #F8FAFC;
+}
+
+.participant-b {
+    justify-content: flex-end;
+}
+
+.participant-b .chat-bubble {
+    background-color: #262C34;
+    border: 1px solid rgba(180, 160, 120, 0.15);
+    color: #F8FAFC;
+}
+
+.persona-label {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    color: #B4A078;
+}
+
+/* Hero Card Style */
+.hero-card {
+    background-color: #1A1D23;
+    border: 1px solid rgba(180, 160, 120, 0.1);
+    padding: 3rem;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 700px;
+    margin: 4rem auto;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Sticky Topic Header */
+.sticky-topic {
+    position: fixed;
+    top: 0;
+    left: 20rem;
+    right: 0;
+    background-color: rgba(18, 20, 24, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem 2rem 1rem 2rem;
+    z-index: 99;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Hide Streamlit components */
+#MainMenu {
+    visibility: hidden;
+}
+
+footer {
+    visibility: hidden;
+}
+
+/* Transparent Header to keep sidebar toggle accessible */
+header[data-testid="stHeader"] {
+    background: transparent !important;
+}
+
+/* Ensure sidebar toggle button is visible */
+header[data-testid="stHeader"] button {
+    visibility: visible !important;
+    color: #B4A078 !important;
+    /* Match the gold accent */
+}
+
+/* Adjust main content padding for sticky header */
+.main-content {
+    padding-top: 9rem;
+    padding-bottom: 5rem;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+
+    /* Release the sticky header so it doesn't overlap on small screens */
+    .sticky-topic {
+        position: relative !important;
+        left: 0 !important;
+        padding: 1rem !important;
+        margin-bottom: 1rem !important;
+    }
+
+    /* Adjust main content for mobile flow */
+    .main-content {
+        padding-top: 1rem !important;
+        padding-bottom: 5rem !important;
+    }
+
+    .hero-card {
+        padding: 1.5rem !important;
+        margin: 1rem !important;
+    }
+
+    .chat-bubble {
+        max-width: 95% !important;
+        padding: 1rem !important;
+    }
+}
