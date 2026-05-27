@@ -1,19 +1,9 @@
-/* Import Premium Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,700;1,700&family=Merriweather:wght@300;400;700&display=swap');
 
-/* Global Styles - Deep Slate */
-.stApp {
-    background-color: #121418;
-    color: #E2E8F0;
-    font-family: 'Inter', sans-serif;
-}
-
-/* Typography Polish */
 h1,
 h2,
 h3 {
     font-family: 'Playfair Display', serif;
-    color: #F8FAFC;
 }
 
 .serif-text {
@@ -22,8 +12,7 @@ h3 {
 
 /* Sidebar Refinement */
 [data-testid="stSidebar"] {
-    background-color: #1A1D23;
-    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    border-right: 1px solid rgba(128, 128, 128, 0.2);
 }
 
 /* Target the internal sidebar container for balanced efficiency */
@@ -45,11 +34,10 @@ h3 {
 [data-testid="stSidebar"] .sidebar-header {
     font-family: 'Playfair Display', serif;
     font-size: 1.6rem;
-    color: #B4A078;
-    /* Muted Gold */
+    color: #064e3b;
     margin-bottom: 1.1rem;
     text-align: center;
-    border-bottom: 1px solid rgba(180, 160, 120, 0.2);
+    border-bottom: 1px solid rgba(6, 78, 59, 0.2);
     padding-bottom: 0.6rem;
 }
 
@@ -58,8 +46,7 @@ h3 {
     font-family: 'Playfair Display', serif;
     font-size: 1rem !important;
     font-weight: 700 !important;
-    color: #B4A078 !important;
-    /* Muted Gold */
+    color: #064e3b !important;
     margin-top: 0.5rem !important;
     margin-bottom: 0.5rem !important;
     text-transform: uppercase;
@@ -76,48 +63,42 @@ hr {
 
 /* Participant Selection Styling */
 [data-baseweb="tag"] {
-    background-color: #2D333D !important;
+    background-color: #064e3b !important;
     border-radius: 20px !important;
     padding: 4px 12px !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid #064e3b !important;
 }
 
 [data-baseweb="tag"] span {
-    color: #E2E8F0 !important;
     font-size: 0.85rem !important;
+    color: white !important;
+    font-weight: 500 !important;
 }
 
 /* Enhanced Selectbox Stability */
 div[data-baseweb="popover"] {
-    background-color: #1A1D23 !important;
     z-index: 9999 !important;
 }
 
 div[data-baseweb="popover"] li {
     background-color: transparent !important;
-    color: #E2E8F0 !important;
     transition: all 0.2s ease !important;
 }
 
 div[data-baseweb="popover"] li:hover {
-    background-color: #2D333D !important;
-    color: #B4A078 !important;
-    /* Muted Gold for hover text */
+    color: currentColor !important;
 }
 
 /* Target the main select box input area */
 div[data-baseweb="select"]>div {
-    background-color: #1A1D23 !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(128, 128, 128, 0.2) !important;
     border-radius: 8px !important;
-    color: #E2E8F0 !important;
 }
 
 
-/* Custom Button Style: Sophisticated Terracotta */
+/* Custom Button Style: Sophisticated Green */
 .stButton button {
-    background-color: #93441A !important;
-    /* Deep Terracotta */
+    background-color: #064e3b !important;
     color: white !important;
     font-family: 'Inter', sans-serif;
     font-weight: 500;
@@ -130,8 +111,7 @@ div[data-baseweb="select"]>div {
 }
 
 .stButton button:hover {
-    background-color: #B35A44 !important;
-    /* Muted Terracotta */
+    background-color: #0a6950 !important;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
     transform: translateY(-1px);
 }
@@ -150,26 +130,15 @@ div[data-baseweb="select"]>div {
     line-height: 1.6;
     font-size: 0.95rem;
     position: relative;
+    border: 1px solid rgba(128, 128, 128, 0.1);
 }
 
 .participant-a {
     justify-content: flex-start;
 }
 
-.participant-a .chat-bubble {
-    background-color: #1E2329;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    color: #F8FAFC;
-}
-
 .participant-b {
     justify-content: flex-end;
-}
-
-.participant-b .chat-bubble {
-    background-color: #262C34;
-    border: 1px solid rgba(180, 160, 120, 0.15);
-    color: #F8FAFC;
 }
 
 .persona-label {
@@ -179,19 +148,17 @@ div[data-baseweb="select"]>div {
     text-transform: uppercase;
     letter-spacing: 0.05em;
     margin-bottom: 0.5rem;
-    color: #B4A078;
+    color: #064e3b;
 }
 
 /* Hero Card Style */
 .hero-card {
-    background-color: #1A1D23;
-    border: 1px solid rgba(180, 160, 120, 0.1);
+    border: 2px solid #064e3b !important;
     padding: 3rem;
     border-radius: 20px;
     text-align: center;
     max-width: 700px;
     margin: 4rem auto;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
 /* Sticky Topic Header */
@@ -200,11 +167,10 @@ div[data-baseweb="select"]>div {
     top: 0;
     left: 20rem;
     right: 0;
-    background-color: rgba(18, 20, 24, 0.95);
     backdrop-filter: blur(10px);
     padding: 1.5rem 2rem 1rem 2rem;
     z-index: 99;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(128, 128, 128, 0.1);
 }
 
 /* Hide Streamlit components */
@@ -224,8 +190,7 @@ header[data-testid="stHeader"] {
 /* Ensure sidebar toggle button is visible */
 header[data-testid="stHeader"] button {
     visibility: visible !important;
-    color: #B4A078 !important;
-    /* Match the gold accent */
+    color: currentColor !important;
 }
 
 /* Adjust main content padding for sticky header */

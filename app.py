@@ -1,4 +1,3 @@
-# 1. Imports
 import streamlit as st
 from google import genai
 from google.genai import types
@@ -6,18 +5,15 @@ import os
 import random
 from dotenv import load_dotenv
 
-# 2. Setup
 load_dotenv()
 api_key = os.getenv("GEMINI_API_KEY")
 
-# 3. AI Configuration
 if api_key:
     client = genai.Client(api_key=api_key)
 else:
     st.error("API Key not found. Please check your .env file or environment variables.")
     st.stop()
 
-# 4. Persona Data
 PERSONAS = {
     # 1. The Architects & Philosophers (AI Ethics & Existential Risk)
     "Geoffrey Hinton": "Computer scientist and 'Godfather of AI', pioneer of neural networks who now warns of the potential dangers of superintelligence.",
@@ -37,7 +33,6 @@ PERSONAS = {
     "Jordan Peterson": "Psychologist, emphasizes personal responsibility, critiques radical progressivism and identity politics."
 }
 
-# 5. UI Configuration & Design System
 st.set_page_config(
     page_title="AI Debate Club", 
     page_icon="⚖️", 
@@ -52,7 +47,6 @@ def load_css(file_name):
 
 load_css("styles.css")
 
-# 6. Sidebar: The Command Center
 with st.sidebar:
     st.markdown('<div class="sidebar-header">AI Debate Club</div>', unsafe_allow_html=True)
     
@@ -98,7 +92,7 @@ with st.sidebar:
     st.markdown("<div style='margin-top: 0.5rem;'></div>", unsafe_allow_html=True)
     start_debate = st.button("Initialize Debate")
 
-# 7. Session State Initialization
+# Session State Initialization
 if "messages" not in st.session_state or start_debate:
     st.session_state.messages = []
     st.session_state.debate_active = False
@@ -111,7 +105,7 @@ if start_debate:
         st.session_state.debate_active = True
         st.session_state.messages.append({"role": "system_marker", "content": "Debate started"})
 
-# 8. AI Logic (Formalized Debate Structure)
+# AI Logic (Formalized Debate Structure)
 def get_gemini_response(messages):
     persona_descriptions = "\n".join([f"- {name}: {desc}" for name, desc in PERSONAS.items() if name in selected_personas])
     
@@ -191,18 +185,17 @@ def get_gemini_response(messages):
         except Exception as e2:
             return f"Critical Engine Failure: {str(e2)}"
 
-# 9. Main Stage Display
 if not st.session_state.get("debate_active"):
     # Empty State: Hero Card
     st.markdown(f"""
-    <div class="hero-card">
+    <div class="hero-card" style="border: 2px solid #064e3b !important;">
         <h1 style="font-size: 3rem; margin-bottom: 1rem;">The Arena Awaits</h1>
-        <p class="serif-text" style="font-size: 1.2rem; color: #94A3B8; margin-bottom: 2rem;">
+        <p class="serif-text" style="font-size: 1.2rem; margin-bottom: 2rem;">
             Step into a world of intellectual rigor. Orchestrate dialogues between history's most compelling minds on the topics that define our future.
         </p>
-        <div style="text-align: left; background: rgba(0,0,0,0.2); padding: 1.5rem; border-radius: 10px;">
-            <p style="font-weight: 600; margin-bottom: 0.5rem; color: #B4A078;">HOW TO BEGIN:</p>
-            <ul style="color: #94A3B8; font-size: 0.9rem;">
+        <div style="text-align: left; padding: 1.5rem; border-radius: 10px; border: 2px solid #064e3b;">
+            <p style="font-weight: 600; margin-bottom: 0.5rem; color: #064e3b;">HOW TO BEGIN:</p>
+            <ul style="font-size: 0.9rem;">
                 <li>Define a <b>Debate Subject</b> in the Command Center.</li>
                 <li>Choose your <b>Participants</b> from our curated personas.</li>
                 <li>Adjust the <b>Tone</b> and <b>Engine</b> for desired depth.</li>
@@ -219,13 +212,13 @@ else:
     <div class="sticky-topic">
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <div>
-                <span style="color: #B4A078; font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Current Subject:</span>
+                <span style="color: #064e3b; font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Current Subject:</span>
                 <h3 style="margin: 0; font-size: 1.2rem;">{debate_topic}</h3>
-                <div style="font-size: 0.75rem; color: #94A3B8; font-style: italic; margin-top: 0.2rem;">Tip: Direct the debate, challenge assumptions, or pivot the focus.</div>
+                <div style="font-size: 0.75rem; font-style: italic; margin-top: 0.2rem;">Tip: Direct the debate, challenge assumptions, or pivot the focus.</div>
             </div>
             <div style="text-align: right;">
-                <span style="color: #94A3B8; font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Current Stage:</span>
-                <div style="color: #F8FAFC; font-weight: 600;">{stage}</div>
+                <span style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Current Stage:</span>
+                <div style="font-weight: 600;">{stage}</div>
             </div>
         </div>
     </div>
@@ -243,8 +236,8 @@ else:
             if message["role"] == "user":
                 st.markdown(f"""
                 <div class="chat-row participant-b">
-                    <div class="chat-bubble" style="background-color: #2D333D; border-left: 4px solid #B4A078;">
-                        <div class="persona-label" style="color: #F8FAFC;">Moderator (You)</div>
+                    <div class="chat-bubble" style="border-left: 4px solid #064e3b;">
+                        <div class="persona-label">Moderator (You)</div>
                         {content}
                     </div>
                 </div>
@@ -263,7 +256,6 @@ else:
                 </div>
                 """, unsafe_allow_html=True)
 
-    # Interaction Logic (Back outside the column)
     user_input = st.chat_input("Intervene as Moderator...")
 
     if user_input:
