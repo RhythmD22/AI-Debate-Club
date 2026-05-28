@@ -2,7 +2,7 @@
 
 ## Overview
 
-AI Debate Club is a high-fidelity interactive web application that simulates structured, high-stakes intellectual discourse. It orchestrates debates between a curated roster of historical and contemporary figures, transitioning them through formal stages: **Opening Statements**, **Rebuttals**, and **Closing Statements**. 
+AI Debate Club is a high-fidelity interactive web application that simulates structured, high-stakes intellectual discourse. It orchestrates debates between a curated roster of contemporary figures, transitioning them through formal stages: **Opening Statements**, **Rebuttals**, and **Closing Statements**. 
 
 The project demonstrates a mature approach to LLM orchestration, structured prompt engineering, and a cohesive, brand-driven UI/UX design.
 
@@ -16,7 +16,6 @@ The project demonstrates a mature approach to LLM orchestration, structured prom
 ## Key Features
 
 - **Formal Debate Structure**: Unlike standard chatbots, this app implements a stage-based moderation engine that guides the LLM through distinct phases of argumentation, ensuring coherent and productive discourse.
-- **Dark Academia Aesthetic**: A premium, branded design system featuring a deep slate color palette, serif typography, and custom UI components for a sophisticated, "standalone app" feel.
 - **Architectural Separation**: The project uses a modular design, with presentation logic isolated into an external `styles.css` file for cleaner maintainability and professional production standards.
 - **Dynamic Persona Orchestration**: A multi-agent simulation framework that ensures one-turn-at-a-time responses, strictly enforced via system instructions and round-robin persona logic.
 - **User-as-Moderator**: The interface empowers the user to act as the primary moderator, enabling real-time interventions, topic pivots, and direct challenges to the AI participants.
