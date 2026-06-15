@@ -4,7 +4,7 @@
 
 AI Debate Club is a high-fidelity interactive web application that simulates structured, high-stakes intellectual discourse. It orchestrates debates between a curated roster of contemporary figures, transitioning them through formal stages: **Opening Statements**, **Rebuttals**, and **Closing Statements**. 
 
-The project demonstrates a mature approach to LLM orchestration, structured prompt engineering, and a cohesive, brand-driven UI/UX design.
+The project demonstrates a mature approach to LLM orchestration, structured prompt engineering, and a cohesive UI/UX design.
 
 ## Getting Started
 
