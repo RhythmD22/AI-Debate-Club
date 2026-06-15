@@ -15,7 +15,7 @@ h3 {
     border-right: 1px solid rgba(128, 128, 128, 0.2);
 }
 
-/* Target the internal sidebar container for balanced efficiency */
+/* Sidebar container spacing */
 [data-testid="stSidebar"]>div:first-child {
     padding: 1.15rem 1rem 0.25rem 1rem !important;
 }
@@ -75,7 +75,7 @@ hr {
     font-weight: 500 !important;
 }
 
-/* Enhanced Selectbox Stability */
+/* Selectbox popover stability */
 div[data-baseweb="popover"] {
     z-index: 9999 !important;
 }
@@ -89,14 +89,34 @@ div[data-baseweb="popover"] li:hover {
     color: currentColor !important;
 }
 
-/* Target the main select box input area */
+/* Select box input */
 div[data-baseweb="select"]>div {
     border: 1px solid rgba(128, 128, 128, 0.2) !important;
     border-radius: 8px !important;
 }
 
+div[data-baseweb="select"]>div:focus-within {
+    border-color: #064e3b !important;
+    box-shadow: 0 0 0 1px #064e3b !important;
+}
 
-/* Custom Button Style: Sophisticated Green */
+*:focus-visible {
+    outline-color: #064e3b !important;
+}
+
+[data-testid="stTextArea"] :focus,
+[data-testid="stTextArea"] :focus-visible,
+[data-testid="stTextArea"] :focus-within,
+[data-testid="stTextArea"] textarea:focus,
+[data-testid="stTextArea"] textarea:focus-visible,
+[data-testid="stTextArea"] [data-baseweb="textarea"]:focus,
+[data-testid="stTextArea"] [data-baseweb="input"]:focus {
+    outline-color: #064e3b !important;
+    border-color: #064e3b !important;
+    box-shadow: 0 0 0 1px #064e3b !important;
+}
+
+/* Initialize Debate button */
 .stButton button {
     background-color: #064e3b !important;
     color: white !important;
@@ -116,7 +136,7 @@ div[data-baseweb="select"]>div {
     transform: translateY(-1px);
 }
 
-/* Chat Message Wrappers */
+/* Chat layout */
 .chat-row {
     display: flex;
     margin-bottom: 1.5rem;
@@ -159,6 +179,22 @@ div[data-baseweb="select"]>div {
     text-align: center;
     max-width: 700px;
     margin: 4rem auto;
+}
+
+.hero-card-inner {
+    border: 2px solid #064e3b;
+}
+
+.hero-card-inner p {
+    color: #064e3b;
+}
+
+.topic-label {
+    color: #064e3b;
+}
+
+.chat-bubble-moderator {
+    border-left: 4px solid #064e3b;
 }
 
 /* Sticky Topic Header */

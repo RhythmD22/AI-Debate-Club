@@ -47,6 +47,28 @@ def load_css(file_name):
 
 load_css("styles.css")
 
+try:
+    if st.get_option("theme.base") == "dark":
+        st.markdown("""
+        <style>
+            [data-testid="stSidebar"] .sidebar-header { color: #34d399; border-bottom-color: rgba(52, 211, 153, 0.25); }
+            .sidebar-section-header { color: #34d399 !important; }
+            .persona-label { color: #34d399; }
+            .hero-card { border-color: #34d399 !important; }
+            .hero-card-inner { border-color: #34d399; }
+            .hero-card-inner p { color: #34d399; }
+            .topic-label { color: #34d399; }
+            .chat-bubble-moderator { border-left-color: #34d399; }
+            *:focus-visible { outline-color: #34d399 !important; }
+            div[data-baseweb="select"] > div:focus-within { border-color: #34d399 !important; box-shadow: 0 0 0 1px #34d399 !important; }
+            [data-testid="stTextArea"] :focus,
+            [data-testid="stTextArea"] :focus-visible,
+            [data-testid="stTextArea"] :focus-within { outline-color: #34d399 !important; border-color: #34d399 !important; box-shadow: 0 0 0 1px #34d399 !important; }
+        </style>
+        """, unsafe_allow_html=True)
+except Exception:
+    pass
+
 with st.sidebar:
     st.markdown('<div class="sidebar-header">AI Debate Club</div>', unsafe_allow_html=True)
     
@@ -170,13 +192,13 @@ def get_gemini_response(messages, stage, next_persona):
 
 if not st.session_state.get("debate_active"):
     st.markdown(f"""
-    <div class="hero-card" style="border: 2px solid #064e3b !important;">
+    <div class="hero-card">
         <h1 style="font-size: 3rem; margin-bottom: 1rem;">The Arena Awaits</h1>
         <p class="serif-text" style="font-size: 1.2rem; margin-bottom: 2rem;">
             Step into a world of intellectual rigor. Orchestrate dialogues between history's most compelling minds on the topics that define our future.
         </p>
-        <div style="text-align: left; padding: 1.5rem; border-radius: 10px; border: 2px solid #064e3b;">
-            <p style="font-weight: 600; margin-bottom: 0.5rem; color: #064e3b;">HOW TO BEGIN:</p>
+        <div class="hero-card-inner" style="text-align: left; padding: 1.5rem; border-radius: 10px;">
+            <p style="font-weight: 600; margin-bottom: 0.5rem;">HOW TO BEGIN:</p>
             <ul style="font-size: 0.9rem;">
                 <li>Define a <b>Debate Subject</b> in the Command Center.</li>
                 <li>Choose your <b>Participants</b> from our curated personas.</li>
@@ -192,7 +214,7 @@ else:
     <div class="sticky-topic">
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <div>
-                <span style="color: #064e3b; font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Current Subject:</span>
+                <span class="topic-label" style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Current Subject:</span>
                 <h3 style="margin: 0; font-size: 1.2rem;">{debate_topic}</h3>
                 <div style="font-size: 0.75rem; font-style: italic; margin-top: 0.2rem;">Tip: Direct the debate, challenge assumptions, or pivot the focus.</div>
             </div>
@@ -215,7 +237,7 @@ else:
             if message["role"] == "user":
                 st.markdown(f"""
                 <div class="chat-row participant-b">
-                    <div class="chat-bubble" style="border-left: 4px solid #064e3b;">
+                    <div class="chat-bubble chat-bubble-moderator">
                         <div class="persona-label">Moderator (You)</div>
                         {content}
                     </div>
