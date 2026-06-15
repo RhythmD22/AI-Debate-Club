@@ -16,14 +16,14 @@ The project demonstrates a mature approach to LLM orchestration, structured prom
 ## Key Features
 
 - **Formal Debate Structure**: Unlike standard chatbots, this app implements a stage-based moderation engine that guides the LLM through distinct phases of argumentation, ensuring coherent and productive discourse.
-- **Architectural Separation**: The project uses a modular design, with presentation logic isolated into an external `styles.css` file for cleaner maintainability and professional production standards.
-- **Dynamic Persona Orchestration**: A multi-agent simulation framework that ensures one-turn-at-a-time responses, strictly enforced via system instructions and round-robin persona logic.
+- **Architectural Separation**: Presentation logic is isolated into an external `styles.css` file for cleaner maintainability.
+- **Dynamic Persona Orchestration**: Multi-persona role-play that ensures one-turn-at-a-time responses, strictly enforced via system instructions and round-robin persona logic.
 - **User-as-Moderator**: The interface empowers the user to act as the primary moderator, enabling real-time interventions, topic pivots, and direct challenges to the AI participants.
 - **Engine Control**: Built-in support for multiple Gemini and Gemma model variants, allowing users to benchmark different AI "intellects" in real-time.
 
 ## Technology Stack
 
-- **Core**: Python 3.10+, Streamlit.
+- **Core**: Python 3.13+, Streamlit.
 - **AI Engine**: Google Gemini API (`google-genai` 2026 SDK).
-- **Design**: Custom CSS-in-JS (via `styles.css`), Google Fonts ('Inter', 'Playfair Display', 'Merriweather').
+- **Design**: Custom CSS, Google Fonts ('Inter', 'Playfair Display', 'Merriweather').
 - **Orchestration**: Custom session state management to handle multi-persona turn-taking.

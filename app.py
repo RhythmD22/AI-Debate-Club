@@ -40,7 +40,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Architectural Helper: Separate Style Loading
+# Load custom CSS
 def load_css(file_name):
     with open(file_name) as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
@@ -101,28 +101,12 @@ if start_debate:
     if len(selected_personas) < 2:
         st.sidebar.error("Select at least 2 participants.")
     else:
-        st.session_state.messages = []
         st.session_state.debate_active = True
         st.session_state.messages.append({"role": "system_marker", "content": "Debate started"})
 
 # AI Logic (Formalized Debate Structure)
-def get_gemini_response(messages):
+def get_gemini_response(messages, stage, next_persona):
     persona_descriptions = "\n".join([f"- {name}: {desc}" for name, desc in PERSONAS.items() if name in selected_personas])
-    
-    # Track Stage and determine next persona in round-robin
-    assistant_msgs = [m for m in messages if m["role"] == "assistant"]
-    num_assistant_msgs = len(assistant_msgs)
-    
-    next_persona = selected_personas[num_assistant_msgs % len(selected_personas)]
-    
-    if num_assistant_msgs < len(selected_personas):
-        stage = "Opening Statements"
-    elif num_assistant_msgs < len(selected_personas) * 2:
-        stage = "Rebuttal & Cross-Examination"
-    else:
-        stage = "Closing Statements"
-    
-    st.session_state.debate_stage = stage
     debate_momentum = random.randint(1000, 9999)
 
     tone_instructions = {
@@ -157,7 +141,8 @@ def get_gemini_response(messages):
     ]
     
     for msg in messages:
-        if msg["role"] == "system_marker": continue 
+        if msg["role"] == "system_marker":
+            continue
         
         # Post-process message to ensure clean bold labels
         clean_content = msg["content"]
@@ -175,9 +160,7 @@ def get_gemini_response(messages):
         chat = client.chats.create(model=model_choice, history=history)
         response = chat.send_message(prompt)
         return response.text
-    except Exception as e:
-        # Fallback to a stable model if the chosen one fails
-        st.sidebar.error(f"Engine Error: {str(e)}")
+    except Exception:
         try:
             chat = client.chats.create(model="gemini-2.0-flash", history=history)
             response = chat.send_message(prompt)
@@ -186,7 +169,6 @@ def get_gemini_response(messages):
             return f"Critical Engine Failure: {str(e2)}"
 
 if not st.session_state.get("debate_active"):
-    # Empty State: Hero Card
     st.markdown(f"""
     <div class="hero-card" style="border: 2px solid #064e3b !important;">
         <h1 style="font-size: 3rem; margin-bottom: 1rem;">The Arena Awaits</h1>
@@ -205,8 +187,6 @@ if not st.session_state.get("debate_active"):
     </div>
     """, unsafe_allow_html=True)
 else:
-    # Live Debate State
-    # Sticky Topic Header
     stage = st.session_state.get("debate_stage", "Starting...")
     st.markdown(f"""
     <div class="sticky-topic">
@@ -225,7 +205,6 @@ else:
     <div class="main-content"></div>
     """, unsafe_allow_html=True)
 
-    # Chat Display
     col_left, col_mid, col_right = st.columns([1, 10, 1])
     with col_mid:
         for i, message in enumerate(st.session_state.messages):
@@ -243,7 +222,17 @@ else:
                 </div>
                 """, unsafe_allow_html=True)
             else:
-                persona_name = content.split(":")[0].replace("**", "").strip()
+                if content.startswith("**"):
+                    name_end = content.find("**", 2)
+                    if name_end != -1 and content[name_end:name_end+3] == "**:":
+                        persona_name = content[2:name_end]
+                        display_content = content[name_end+3:].strip()
+                    else:
+                        persona_name = "AI Participant"
+                        display_content = content
+                else:
+                    persona_name = "AI Participant"
+                    display_content = content
                 is_even = i % 2 == 0
                 alignment_class = "participant-a" if is_even else "participant-b"
 
@@ -251,7 +240,7 @@ else:
                 <div class="chat-row {alignment_class}">
                     <div class="chat-bubble">
                         <div class="persona-label">{persona_name}</div>
-                        {content.replace(f"**{persona_name}**:", "").replace(f"{persona_name}:", "").strip()}
+                        {display_content}
                     </div>
                 </div>
                 """, unsafe_allow_html=True)
@@ -262,11 +251,22 @@ else:
         st.session_state.messages.append({"role": "user", "content": user_input})
         st.rerun()
 
-    # Automatic Trigger
     if len(st.session_state.messages) > 0:
         last_msg = st.session_state.messages[-1]
         if last_msg["role"] == "system_marker" or last_msg["role"] == "user":
             with st.spinner("Moderator is crafting the next response..."):
-                response = get_gemini_response(st.session_state.messages)
+                assistant_msgs = [m for m in st.session_state.messages if m["role"] == "assistant"]
+                num_msgs = len(assistant_msgs)
+                next_persona = selected_personas[num_msgs % len(selected_personas)]
+
+                if num_msgs < len(selected_personas):
+                    stage = "Opening Statements"
+                elif num_msgs < len(selected_personas) * 2:
+                    stage = "Rebuttal & Cross-Examination"
+                else:
+                    stage = "Closing Statements"
+
+                st.session_state.debate_stage = stage
+                response = get_gemini_response(st.session_state.messages, stage, next_persona)
                 st.session_state.messages.append({"role": "assistant", "content": response})
                 st.rerun()

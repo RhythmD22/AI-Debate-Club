@@ -20,7 +20,7 @@ h3 {
     padding: 1.15rem 1rem 0.25rem 1rem !important;
 }
 
-/* Hide the sidebar's bottom resize handle/padding area */
+/* Collapse extra bottom padding in sidebar */
 [data-testid="stSidebar"] [data-testid="stVerticalBlock"]>div:last-child {
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
