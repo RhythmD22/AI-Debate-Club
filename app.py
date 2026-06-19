@@ -47,28 +47,6 @@ def load_css(file_name):
 
 load_css("styles.css")
 
-try:
-    if st.get_option("theme.base") == "dark":
-        st.markdown("""
-        <style>
-            [data-testid="stSidebar"] .sidebar-header { color: #34d399; border-bottom-color: rgba(52, 211, 153, 0.25); }
-            .sidebar-section-header { color: #34d399 !important; }
-            .persona-label { color: #34d399; }
-            .hero-card { border-color: #34d399 !important; }
-            .hero-card-inner { border-color: #34d399; }
-            .hero-card-inner p { color: #34d399; }
-            .topic-label { color: #34d399; }
-            .chat-bubble-moderator { border-left-color: #34d399; }
-            *:focus-visible { outline-color: #34d399 !important; }
-            div[data-baseweb="select"] > div:focus-within { border-color: #34d399 !important; box-shadow: 0 0 0 1px #34d399 !important; }
-            [data-testid="stTextArea"] :focus,
-            [data-testid="stTextArea"] :focus-visible,
-            [data-testid="stTextArea"] :focus-within { outline-color: #34d399 !important; border-color: #34d399 !important; box-shadow: 0 0 0 1px #34d399 !important; }
-        </style>
-        """, unsafe_allow_html=True)
-except Exception:
-    pass
-
 with st.sidebar:
     st.markdown('<div class="sidebar-header">AI Debate Club</div>', unsafe_allow_html=True)
     

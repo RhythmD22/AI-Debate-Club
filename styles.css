@@ -1,32 +1,79 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,700;1,700&family=Merriweather:wght@300;400;700&display=swap');
 
+/* ============================================
+   DESIGN TOKENS  (light / dark via light-dark())
+   ============================================ */
+
+:root {
+  color-scheme: light dark;
+
+  --color-primary: light-dark(#064e3b, #10b981);
+  --color-primary-hover: light-dark(#0a6950, #34d399);
+  --color-primary-border: light-dark(rgba(6, 78, 59, 0.2), rgba(16, 185, 129, 0.25));
+  --color-on-primary: light-dark(#ffffff, #022c22);
+
+  --color-surface: light-dark(#ffffff, #1a1a1a);
+  --color-surface-alt: light-dark(#f9faf9, #242424);
+  --color-surface-raised: light-dark(#ffffff, #1a1a1a);
+  --color-surface-transparent: light-dark(rgba(255, 255, 255, 0.85), rgba(26, 26, 26, 0.88));
+
+  --color-border: light-dark(rgba(128, 128, 128, 0.2), #3a3a3a);
+  --color-border-light: light-dark(rgba(128, 128, 128, 0.1), #2e2e2e);
+
+  --color-text: light-dark(inherit, #e8e8e8);
+  --color-text-secondary: light-dark(#555555, #999999);
+  --color-text-muted: light-dark(#777777, #777777);
+
+  --shadow-hero: light-dark(none, 0 20px 25px -5px rgba(0, 0, 0, 0.65));
+  --shadow-bubble: light-dark(none, 0 1px 2px rgba(0, 0, 0, 0.35));
+  --shadow-sticky: light-dark(none, 0 4px 6px -2px rgba(0, 0, 0, 0.45));
+  --shadow-button: light-dark(0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.35));
+  --shadow-button-hover: light-dark(0 6px 12px rgba(0, 0, 0, 0.2), 0 10px 15px -3px rgba(0, 0, 0, 0.55));
+}
+
+/* ============================================
+   BASE TYPOGRAPHY
+   ============================================ */
+
 h1,
 h2,
 h3 {
   font-family: 'Playfair Display', serif;
 }
 
+h1 {
+  line-height: 1.15;
+}
+
+h2 {
+  line-height: 1.25;
+}
+
+h3 {
+  line-height: 1.35;
+}
+
 .serif-text {
   font-family: 'Merriweather', serif;
 }
 
-/* Sidebar Refinement */
+/* ============================================
+   SIDEBAR
+   ============================================ */
+
 [data-testid="stSidebar"] {
-  border-right: 1px solid rgba(128, 128, 128, 0.2);
+  border-right: 1px solid var(--color-border);
 }
 
-/* Sidebar container spacing */
 [data-testid="stSidebar"]>div:first-child {
   padding: 1.15rem 1rem 0.25rem 1rem !important;
 }
 
-/* Collapse extra bottom padding in sidebar */
 [data-testid="stSidebar"] [data-testid="stVerticalBlock"]>div:last-child {
   margin-bottom: 0 !important;
   padding-bottom: 0 !important;
 }
 
-/* Subtle spacing for the sidebar toggle area */
 [data-testid="stSidebarNav"] {
   padding-top: 0.35rem !important;
 }
@@ -34,19 +81,18 @@ h3 {
 [data-testid="stSidebar"] .sidebar-header {
   font-family: 'Playfair Display', serif;
   font-size: 1.6rem;
-  color: #064e3b;
+  color: var(--color-primary);
   margin-bottom: 1.1rem;
   text-align: center;
-  border-bottom: 1px solid rgba(6, 78, 59, 0.2);
+  border-bottom: 1px solid var(--color-primary-border);
   padding-bottom: 0.6rem;
 }
 
-/* Sidebar Section Headers */
 .sidebar-section-header {
   font-family: 'Playfair Display', serif;
   font-size: 1rem !important;
   font-weight: 700 !important;
-  color: #064e3b !important;
+  color: var(--color-primary) !important;
   margin-top: 0.5rem !important;
   margin-bottom: 0.5rem !important;
   text-transform: uppercase;
@@ -61,21 +107,19 @@ hr {
   margin: 0.65rem 0 !important;
 }
 
-/* Participant Selection Styling */
 [data-baseweb="tag"] {
-  background-color: #064e3b !important;
+  background-color: var(--color-primary) !important;
   border-radius: 20px !important;
   padding: 4px 12px !important;
-  border: 1px solid #064e3b !important;
+  border: 1px solid var(--color-primary) !important;
 }
 
 [data-baseweb="tag"] span {
   font-size: 0.85rem !important;
-  color: white !important;
+  color: var(--color-on-primary) !important;
   font-weight: 500 !important;
 }
 
-/* Selectbox popover stability */
 div[data-baseweb="popover"] {
   z-index: 9999 !important;
 }
@@ -89,19 +133,18 @@ div[data-baseweb="popover"] li:hover {
   color: currentColor !important;
 }
 
-/* Select box input */
 div[data-baseweb="select"]>div {
-  border: 1px solid rgba(128, 128, 128, 0.2) !important;
+  border: 1px solid var(--color-border) !important;
   border-radius: 8px !important;
 }
 
 div[data-baseweb="select"]>div:focus-within {
-  border-color: #064e3b !important;
-  box-shadow: 0 0 0 1px #064e3b !important;
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 1px var(--color-primary) !important;
 }
 
 *:focus-visible {
-  outline-color: #064e3b !important;
+  outline-color: var(--color-primary) !important;
 }
 
 [data-testid="stTextArea"] :focus,
@@ -111,15 +154,14 @@ div[data-baseweb="select"]>div:focus-within {
 [data-testid="stTextArea"] textarea:focus-visible,
 [data-testid="stTextArea"] [data-baseweb="textarea"]:focus,
 [data-testid="stTextArea"] [data-baseweb="input"]:focus {
-  outline-color: #064e3b !important;
-  border-color: #064e3b !important;
-  box-shadow: 0 0 0 1px #064e3b !important;
+  outline-color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 1px var(--color-primary) !important;
 }
 
-/* Initialize Debate button */
 .stButton button {
-  background-color: #064e3b !important;
-  color: white !important;
+  background-color: var(--color-primary) !important;
+  color: var(--color-on-primary) !important;
   font-family: 'Inter', sans-serif;
   font-weight: 500;
   border-radius: 8px;
@@ -127,16 +169,19 @@ div[data-baseweb="select"]>div:focus-within {
   width: 100%;
   border: none;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-button);
 }
 
 .stButton button:hover {
-  background-color: #0a6950 !important;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  background-color: var(--color-primary-hover) !important;
+  box-shadow: var(--shadow-button-hover);
   transform: translateY(-1px);
 }
 
-/* Chat layout */
+/* ============================================
+   CHAT SYSTEM
+   ============================================ */
+
 .chat-row {
   display: flex;
   margin-bottom: 1.5rem;
@@ -146,11 +191,19 @@ div[data-baseweb="select"]>div:focus-within {
 .chat-bubble {
   padding: 1.25rem;
   border-radius: 15px;
-  max-width: 80%;
-  line-height: 1.6;
+  max-width: min(80%, 42rem);
+  width: fit-content;
+  line-height: 1.55;
   font-size: 0.95rem;
   position: relative;
-  border: 1px solid rgba(128, 128, 128, 0.1);
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border-light);
+  box-shadow: var(--shadow-bubble);
+  transition: box-shadow 0.25s ease;
+}
+
+.chat-bubble:hover {
+  box-shadow: light-dark(none, 0 4px 8px rgba(0, 0, 0, 0.5));
 }
 
 .participant-a {
@@ -165,51 +218,67 @@ div[data-baseweb="select"]>div:focus-within {
   font-family: 'Playfair Display', serif;
   font-weight: 700;
   font-size: 0.8rem;
+  line-height: 1.6;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 0.5rem;
-  color: #064e3b;
+  color: var(--color-primary);
 }
 
-/* Hero Card Style */
+/* ============================================
+   HERO CARD
+   ============================================ */
+
 .hero-card {
-  border: 2px solid #064e3b !important;
+  border: 2px solid var(--color-primary) !important;
+  background: var(--color-surface-raised);
+  box-shadow: var(--shadow-hero);
   padding: 3rem;
   border-radius: 20px;
   text-align: center;
   max-width: 700px;
   margin: 4rem auto;
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .hero-card-inner {
-  border: 2px solid #064e3b;
+  border: 2px solid var(--color-primary);
 }
 
 .hero-card-inner p {
-  color: #064e3b;
+  color: var(--color-primary);
 }
 
 .topic-label {
-  color: #064e3b;
+  color: var(--color-primary);
 }
 
 .chat-bubble-moderator {
-  border-left: 4px solid #064e3b;
+  border-left: 4px solid var(--color-primary);
 }
 
-/* Sticky Topic Header */
+/* ============================================
+   STICKY TOPIC HEADER
+   ============================================ */
+
 .sticky-topic {
   position: fixed;
   top: 0;
   left: 20rem;
   right: 0;
+  background: var(--color-surface-transparent);
   backdrop-filter: blur(10px);
   padding: 1.5rem 2rem 1rem 2rem;
   z-index: 99;
-  border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+  border-bottom: 1px solid var(--color-border-light);
+  box-shadow: var(--shadow-sticky);
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hide Streamlit components */
+/* ============================================
+   STREAMLIT CHROME
+   ============================================ */
+
 #MainMenu {
   visibility: hidden;
 }
@@ -218,27 +287,40 @@ footer {
   visibility: hidden;
 }
 
-/* Transparent Header to keep sidebar toggle accessible */
 header[data-testid="stHeader"] {
   background: transparent !important;
 }
 
-/* Ensure sidebar toggle button is visible */
 header[data-testid="stHeader"] button {
   visibility: visible !important;
   color: currentColor !important;
 }
 
-/* Adjust main content padding for sticky header */
+/* Chat input focus — override Streamlit's default red ring */
+[data-testid="stChatInput"] textarea:focus,
+[data-testid="stChatInput"] [data-baseweb="textarea"]:focus,
+[data-testid="stChatInput"] [data-baseweb="input"]:focus {
+  outline-color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 1px var(--color-primary) !important;
+}
+
+[data-testid="stChatInput"]>div:focus-within {
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 1px var(--color-primary) !important;
+}
+
 .main-content {
   padding-top: 9rem;
   padding-bottom: 5rem;
 }
 
-/* Mobile Responsiveness */
+/* ============================================
+   MOBILE RESPONSIVE
+   ============================================ */
+
 @media (max-width: 768px) {
 
-  /* Release the sticky header so it doesn't overlap on small screens */
   .sticky-topic {
     position: relative !important;
     left: 0 !important;
@@ -246,7 +328,6 @@ header[data-testid="stHeader"] button {
     margin-bottom: 1rem !important;
   }
 
-  /* Adjust main content for mobile flow */
   .main-content {
     padding-top: 1rem !important;
     padding-bottom: 5rem !important;
