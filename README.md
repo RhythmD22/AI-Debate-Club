@@ -63,11 +63,12 @@ pip install -r requirements.txt
 
 ```
 AI Debate Club/
+├── .gitignore              # Git ignore rules
+├── .python-version         # Pinned Python version (3.13+)
+├── .env.example            # Environment variable template
 ├── app.py                  # Streamlit application, debate engine, and session logic
 ├── styles.css              # Custom styling with light-dark() theming
 ├── requirements.txt        # Python dependencies
-├── .python-version         # Pinned Python version (3.13+)
-├── .env.example            # Environment variable template
 └── README.md
 ```
 
