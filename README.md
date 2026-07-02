@@ -17,6 +17,9 @@
 - [Design System](#design-system)
 - [Tech Stack](#tech-stack)
 - [Getting Started](#getting-started)
+- [Scripts](#scripts)
+- [API](#api)
+- [Environment Variables](#environment-variables)
 - [License](#license)
 
 ---
@@ -150,25 +153,51 @@ Line-heights are proportional — larger text gets tighter leading, smaller text
 ### Setup
 
 1. Clone the repository and install dependencies (see [Install](#install))
-2. Create your environment file:
+2. Create and configure your environment file:
 
 ```bash
 cp .env.example .env
 ```
 
-3. Edit `.env` with your Gemini API key:
-
-```env
-GEMINI_API_KEY=your_gemini_api_key
-```
-
-4. Run the app:
+3. Run the app:
 
 ```bash
 streamlit run app.py
 ```
 
-5. Open `http://localhost:8501` in your browser
+4. Open `http://localhost:8501` in your browser
+
+---
+
+## Scripts
+
+| Command | Description |
+|---------|------------|
+| `pip install -r requirements.txt` | Install Python dependencies |
+| `streamlit run app.py` | Start the local development server |
+| `cp .env.example .env` | Create environment file from template |
+
+---
+
+## API
+
+### Gemini API
+
+The debate engine uses the Gemini API for persona-driven responses. Each turn sends a structured system prompt defining the persona's role, debate tone, and turn-taking rules along with the full debate transcript.
+
+- **Endpoint:** Gemini `generateContent` via the `google-genai` Python SDK
+- **Key required:** Yes — [Google AI Studio](https://aistudio.google.com/apikey) (free tier)
+- **Models:** `gemini-2.5-pro`, `gemini-2.5-flash`, `gemini-3.1-flash-lite`, `gemma3-27b`, `gemma3-12b`, `gemma3-4b`, `gemma3-1b`
+
+---
+
+## Environment Variables
+
+| Variable | Required | Description |
+|----------|----------|------------|
+| `GEMINI_API_KEY` | Yes | Google Gemini key from [aistudio.google.com/apikey](https://aistudio.google.com/apikey) |
+
+Copy `.env.example` to `.env` for local development. Set this in Streamlit Community Cloud for production.
 
 ---
 
