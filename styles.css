@@ -156,6 +156,11 @@ div[data-baseweb="select"]>div:focus-within {
   box-shadow: 0 0 0 1px var(--color-primary) !important;
 }
 
+[data-testid="stMultiSelect"] [data-focus-within] {
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 1px var(--color-primary) !important;
+}
+
 *:focus-visible {
   outline-color: var(--color-primary) !important;
 }
