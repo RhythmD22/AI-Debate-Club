@@ -47,6 +47,25 @@ def load_css(file_name):
 
 load_css("styles.css")
 
+st.html(
+    r"""
+    <script>
+      (function () {
+        var ua = navigator.userAgent || '';
+        var match = ua.match(/Version\/(\d+)/);
+        if (navigator.standalone === true && /iPhone|iPad|iPod/.test(ua) && match && parseInt(match[1], 10) >= 27) {
+          document.documentElement.dataset.ios27 = 'true';
+        }
+        var viewport = document.querySelector('meta[name="viewport"]');
+        if (viewport && viewport.content.indexOf('viewport-fit') === -1) {
+          viewport.content += ', viewport-fit=cover';
+        }
+      })();
+    </script>
+    """,
+    unsafe_allow_javascript=True,
+)
+
 with st.sidebar:
     st.markdown('<div class="sidebar-header">AI Debate Club</div>', unsafe_allow_html=True)
     
