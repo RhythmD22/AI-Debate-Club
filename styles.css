@@ -156,7 +156,8 @@ div[data-baseweb="select"]>div:focus-within {
   box-shadow: 0 0 0 1px var(--color-primary) !important;
 }
 
-[data-testid="stMultiSelect"] [data-focus-within] {
+[data-testid="stMultiSelect"] [data-focus-within],
+[data-testid="stSelectbox"] [data-focus-within] {
   border-color: var(--color-primary) !important;
   box-shadow: 0 0 0 1px var(--color-primary) !important;
 }
@@ -165,16 +166,15 @@ div[data-baseweb="select"]>div:focus-within {
   outline-color: var(--color-primary) !important;
 }
 
-[data-testid="stTextArea"] :focus,
-[data-testid="stTextArea"] :focus-visible,
-[data-testid="stTextArea"] :focus-within,
-[data-testid="stTextArea"] textarea:focus,
-[data-testid="stTextArea"] textarea:focus-visible,
-[data-testid="stTextArea"] [data-baseweb="textarea"]:focus,
-[data-testid="stTextArea"] [data-baseweb="input"]:focus {
-  outline-color: var(--color-primary) !important;
+[data-testid="stTextAreaRootElement"]:focus-within {
   border-color: var(--color-primary) !important;
   box-shadow: 0 0 0 1px var(--color-primary) !important;
+}
+
+[data-testid="stTextArea"] textarea:focus,
+[data-testid="stTextArea"] textarea:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .stButton button {
